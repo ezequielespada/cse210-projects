@@ -5,7 +5,6 @@ public class Journal
 {
     public List<Entry> _entries;
 
-    // Constructor para inicializar la lista de entradas
     public Journal()
     {
         _entries = new List<Entry>();
