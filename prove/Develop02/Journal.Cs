@@ -1,14 +1,9 @@
+using System;
 using System.IO;
 using System.Collections.Generic;
-
 public class Journal
 {
-    public List<Entry> _entries;
-
-    public Journal()
-    {
-        _entries = new List<Entry>();
-    }
+    public List<Entry> _entries = new List<Entry>();
 
     public void AddEntry(Entry newEntry)
     {
@@ -20,40 +15,43 @@ public class Journal
         foreach (var entry in _entries)
         {
             entry.Display();
+            Console.WriteLine();
         }
     }
 
     public void SaveToFile(string file)
     {
-        using (StreamWriter outputFile = new StreamWriter(file))
+        using (StreamWriter writer = new StreamWriter(file))
         {
             foreach (var entry in _entries)
             {
-                outputFile.WriteLine($"{entry._date},{entry._promptText},{entry._entryText}");
+                writer.WriteLine(entry._date);
+                writer.WriteLine(entry._promptText);
+                writer.WriteLine(entry._entryText);
+                writer.WriteLine("----");
             }
         }
     }
 
     public void LoadFromFile(string file)
     {
-        _entries = new List<Entry>();
-
-        string[] lines = File.ReadAllLines(file);
-        foreach (string line in lines)
+        _entries.Clear();
+        using (StreamReader reader = new StreamReader(file))
         {
-            string[] parts = line.Split(',');
-            string date = parts[0];
-            string promptText = parts[1];
-            string entryText = parts[2];
-
-            Entry entry = new Entry
+            string date;
+            while ((date = reader.ReadLine()) != null)
             {
-                _date = date,
-                _promptText = promptText,
-                _entryText = entryText
-            };
-
-            _entries.Add(entry);
+                string promptText = reader.ReadLine();
+                string entryText = reader.ReadLine();
+                reader.ReadLine();
+                Entry entry = new Entry
+                {
+                    _date = date,
+                    _promptText = promptText,
+                    _entryText = entryText
+                };
+                _entries.Add(entry);
+            }
         }
     }
 }
