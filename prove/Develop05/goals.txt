@@ -1,0 +1,5 @@
+600
+SimpleGoal:Ayunar,Ayunar por la gente de Mozambique,500,True
+EternalGoal:Asistir a la Iglesia,Simplemente poder darle valor a cada vez que asisto a la iglesia.,100
+ChecklistGoal:Diezmo,Controlar que este pagando los diezmos en forma anual,100,12,500,2
+NegativeGoal:Enojarse,El que se enoja pierde, y quiero controlar mas mis emociones,-100
