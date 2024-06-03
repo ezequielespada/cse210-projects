@@ -9,7 +9,7 @@ public class NegativeGoal : Goal
 
     public override void RecordEvent()
     {
-        // Deducir puntos cada vez
+        // Subtract points every time
         _points = -Math.Abs(_points);
     }
 

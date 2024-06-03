@@ -5,7 +5,7 @@ public class EternalGoal : Goal
 
     public override void RecordEvent()
     {
-        // Sumar puntos cada vez
+        // Add points every time
     }
 
     public override bool IsComplete() => false;
