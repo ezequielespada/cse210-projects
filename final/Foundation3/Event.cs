@@ -1,23 +1,23 @@
-class Event
+public class Event
 {
-    public string Title { get; private set; }
-    public string Description { get; private set; }
-    public string Date { get; private set; }
-    public string Time { get; private set; }
-    public Address Address { get; private set; }
+    private string _title;
+    private string _description;
+    private string _date;
+    private string _time;
+    private Address _address;
 
     public Event(string title, string description, string date, string time, Address address)
     {
-        Title = title;
-        Description = description;
-        Date = date;
-        Time = time;
-        Address = address;
+        _title = title;
+        _description = description;
+        _date = date;
+        _time = time;
+        _address = address;
     }
 
-    public virtual string GetStandardDetails()
+    public string GetStandardDetails()
     {
-        return $"{Title}\n{Description}\n{Date} at {Time}\nLocation: {Address}";
+        return $"Title: {_title}\nDescription: {_description}\nDate: {_date}\nTime: {_time}\nAddress: {_address.GetFullAddress()}";
     }
 
     public virtual string GetFullDetails()
@@ -25,8 +25,8 @@ class Event
         return GetStandardDetails();
     }
 
-    public virtual string GetShortDescription()
+    public string GetShortDescription()
     {
-        return $"Event Type: {GetType().Name}\nTitle: {Title}\nDate: {Date}";
+        return $"{GetType().Name}: {_title} on {_date}";
     }
 }

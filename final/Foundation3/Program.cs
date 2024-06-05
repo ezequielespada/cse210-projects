@@ -1,33 +1,27 @@
 using System;
 using System.Collections.Generic;
-
-class Program
+public class Program
 {
-    static void Main()
+    public static void Main(string[] args)
     {
-        // Crear eventos
-        Address address1 = new Address("123 Main St", "Springfield", "IL", "USA");
-        Event lecture = new Lecture("Tech Talk", "Advanced C# Techniques", "10/10/2023", "10:00 AM", address1, "John Doe", 100);
+        Address address1 = new Address("123 Main St", "Anytown", "Anystate", "USA");
+        Address address2 = new Address("456 Elm St", "Othertown", "Otherstate", "USA");
+        Address address3 = new Address("789 Oak St", "Elsewhere", "Elsestate", "USA");
 
-        Address address2 = new Address("456 Elm St", "Vancouver", "BC", "Canada");
-        Event reception = new Reception("Company Meetup", "Annual company gathering", "11/11/2023", "6:00 PM", address2, "rsvp@company.com");
+        Lecture lecture = new Lecture("Tech Talk", "A talk on the latest in tech", "2024-06-01", "10:00 AM", address1, "John Doe", 100);
+        Reception reception = new Reception("Wedding Reception", "Celebrate the union of John and Jane", "2024-06-02", "6:00 PM", address2, "rsvp@example.com");
+        OutdoorGathering gathering = new OutdoorGathering("Community Picnic", "Join us for a fun day in the park", "2024-06-03", "11:00 AM", address3, "Sunny");
 
-        Address address3 = new Address("789 Oak St", "Miami", "FL", "USA");
-        Event outdoorGathering = new OutdoorGathering("Community Picnic", "Picnic for the neighborhood", "12/12/2023", "12:00 PM", address3, "Sunny");
+        List<Event> events = new List<Event> { lecture, reception, gathering };
 
-        // Crear lista de eventos
-        List<Event> events = new List<Event> { lecture, reception, outdoorGathering };
-
-        // Mostrar mensajes de marketing
-        foreach (Event eventItem in events)
+        foreach (Event evt in events)
         {
-            Console.WriteLine("Standard Details:");
-            Console.WriteLine(eventItem.GetStandardDetails());
-            Console.WriteLine("Full Details:");
-            Console.WriteLine(eventItem.GetFullDetails());
-            Console.WriteLine("Short Description:");
-            Console.WriteLine(eventItem.GetShortDescription());
+            Console.WriteLine(evt.GetStandardDetails());
             Console.WriteLine();
+            Console.WriteLine(evt.GetFullDetails());
+            Console.WriteLine();
+            Console.WriteLine(evt.GetShortDescription());
+            Console.WriteLine("-----------");
         }
     }
 }

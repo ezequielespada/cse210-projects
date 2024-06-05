@@ -1,15 +1,15 @@
-class OutdoorGathering : Event
+public class OutdoorGathering : Event
 {
-    public string Weather { get; private set; }
+    private string _weatherForecast;
 
-    public OutdoorGathering(string title, string description, string date, string time, Address address, string weather)
+    public OutdoorGathering(string title, string description, string date, string time, Address address, string weatherForecast)
         : base(title, description, date, time, address)
     {
-        Weather = weather;
+        _weatherForecast = weatherForecast;
     }
 
     public override string GetFullDetails()
     {
-        return $"{base.GetStandardDetails()}\nWeather Forecast: {Weather}";
+        return $"{base.GetFullDetails()}\nType: Outdoor Gathering\nWeather Forecast: {_weatherForecast}";
     }
 }
