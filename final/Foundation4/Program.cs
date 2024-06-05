@@ -1,22 +1,21 @@
 using System;
 using System.Collections.Generic;
-
-class Program
+public class Program
 {
-    static void Main()
+    public static void Main()
     {
-        // Crear actividades
-        Activity running = new Running("03 Nov 2023", 30, 3.0);
-        Activity cycling = new Cycling("03 Nov 2023", 30, 15.0);
-        Activity swimming = new Swimming("03 Nov 2023", 30, 20);
+        Console.Clear();
+        List<Activity> activities = new List<Activity>
+        {
+            new Running(new DateTime(2024, 6, 1), 30, 5),
+            new Cycling(new DateTime(2024, 6, 2), 45, 20),
+            new Swimming(new DateTime(2024, 6, 3), 60, 30)
+        };
 
-        // Crear lista de actividades
-        List<Activity> activities = new List<Activity> { running, cycling, swimming };
-
-        // Mostrar resúmenes de actividades
-        foreach (Activity activity in activities)
+        foreach (var activity in activities)
         {
             Console.WriteLine(activity.GetSummary());
+            Console.WriteLine();
         }
     }
 }

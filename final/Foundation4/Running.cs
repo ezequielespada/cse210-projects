@@ -1,9 +1,8 @@
-class Running : Activity
+public class Running : Activity
 {
-    private double _distance;
+    private double _distance; // Distance in km
 
-    public Running(string date, int minutes, double distance)
-        : base(date, minutes)
+    public Running(DateTime date, int lengthInMinutes, double distance) : base(date, lengthInMinutes)
     {
         _distance = distance;
     }
@@ -15,11 +14,11 @@ class Running : Activity
 
     public override double GetSpeed()
     {
-        return (GetDistance() / Minutes) * 60;
+        return (_distance / LengthInMinutes) * 60;
     }
 
     public override double GetPace()
     {
-        return Minutes / GetDistance();
+        return LengthInMinutes / _distance;
     }
 }

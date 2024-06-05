@@ -1,20 +1,30 @@
-abstract class Activity
+public abstract class Activity
 {
-    public string Date { get; private set; }
-    public int Minutes { get; private set; }
+    private DateTime _date;
+    private int _lengthInMinutes; // Length in minutes
 
-    public Activity(string date, int minutes)
+    public Activity(DateTime date, int lengthInMinutes)
     {
-        Date = date;
-        Minutes = minutes;
+        _date = date;
+        _lengthInMinutes = lengthInMinutes;
     }
 
-    public abstract double GetDistance();
-    public abstract double GetSpeed();
-    public abstract double GetPace();
+    public DateTime Date
+    {
+        get { return _date; }
+    }
+
+    public int LengthInMinutes
+    {
+        get { return _lengthInMinutes; }
+    }
+
+    public abstract double GetDistance(); // Distance in km
+    public abstract double GetSpeed(); // Speed in km/h
+    public abstract double GetPace(); // Pace in min/km
 
     public virtual string GetSummary()
     {
-        return $"{Date} {GetType().Name} ({Minutes} min): Distance {GetDistance()} miles, Speed {GetSpeed()} mph, Pace: {GetPace()} min per mile";
+        return $"{_date.ToShortDateString()} {GetType().Name} ({_lengthInMinutes} min) - Distance: {GetDistance():F2} km, Speed: {GetSpeed():F2} km/h, Pace: {GetPace():F2} min/km";
     }
 }
